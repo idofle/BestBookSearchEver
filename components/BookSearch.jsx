@@ -8,7 +8,7 @@ class BookSearch extends React.Component {
       super(props);
 		
       this.state = {
-         searchTerm: '',
+         searchTerm: (this.props.location.search ? this.props.location.search.match(/q=.*((?=&)|$)/i)[0].slice(2) : ''),
          searchState: 0, // 0 - No Search, 1 - Loading, 2 - Success, 3 - Errorת 4 - Nם Results
          results: null,
          errorMessage: ""
@@ -16,6 +16,10 @@ class BookSearch extends React.Component {
 
       this.updateState = this.updateState.bind(this);
       this.searchBooks = this.searchBooks.bind(this);
+
+      if (this.state.searchTerm){
+      	this.searchBooks();
+      }
     };
 
    updateState(e) {
@@ -41,6 +45,7 @@ class BookSearch extends React.Component {
    	  };
 
   	  GoogleBooksService.searchBooks(this.state.searchTerm, success, fail)
+  	  this.props.history.push(`/?q=${this.state.searchTerm}`);
   	  this.setState({searchState: 1});	
    }
 

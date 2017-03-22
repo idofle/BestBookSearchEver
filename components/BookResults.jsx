@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 class BookResults extends React.Component {
 	constructor(props) {
@@ -34,7 +35,7 @@ class BookRow extends React.Component {
    render() {
       return (
          <tr>
-            <td>{this.props.data.volumeInfo.title}</td>
+            <td><Link to={`/book/${this.props.data.id}`}>{this.props.data.volumeInfo.title}</Link></td>
             <td>{this.props.data.volumeInfo.subtitle}</td>
             <td>{this.props.data.volumeInfo.authors ? this.props.data.volumeInfo.authors.join(",") : null}</td>
             <td>{this.props.data.volumeInfo.publishedDate}</td>
