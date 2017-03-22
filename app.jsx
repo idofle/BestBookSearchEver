@@ -9,7 +9,6 @@ class App extends React.Component {
       	<div>
 	        <Header/>
 	        <BookSearch/>
-	        <BookResults/>
         </div>
          
       );
