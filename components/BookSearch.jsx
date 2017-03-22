@@ -8,7 +8,7 @@ class BookSearch extends React.Component {
       super(props);
 		
       this.state = {
-         searchTerm: (this.props.location.search ? this.props.location.search.match(/q=.*((?=&)|$)/i)[0].slice(2) : ''),
+         searchTerm: (this.props.location.search ? this.props.location.search.match(/q=.*((?=&)|$)/i)[0].slice(2) : ''), // using search term from url if applicable
          searchState: 0, // 0 - No Search, 1 - Loading, 2 - Success, 3 - Errorת 4 - Nם Results
          results: null,
          errorMessage: ""
